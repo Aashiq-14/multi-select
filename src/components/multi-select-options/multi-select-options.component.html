@@ -1,6 +1,23 @@
-<div class="mt-1 p-1" style="background-color: #e3f2fd;min-height: 90px ;border: 1px solid #dedede;">
-    <button *ngFor="let option of PData let i=index;" class="btn px-1 mx-1 mb-1 mt-1 btn-sm" (click)="select(i)"
-        [ngClass]="{'btn-primary': option.checked ,'btn-normal':!option.checked}">
-        {{option.value}}
-    </button>
+<div class="row d-flex mt-5 px-3">
+    <div class="col-md-5">
+        <span>Available: <a style="text-decoration: none;" (click)="selectAll()" href="#">Select All</a></span>
+        <div class="mt-1 p-1" style="background-color: #e3f2fd;min-height: 90px ;border: 1px solid #dedede;">
+            <button [disabled]="disabled" *ngFor="let option of PData let i=index;" class="btn px-1 mx-1 mb-1 mt-1 btn-sm" (click)="select(option)"
+                [ngClass]="{'btn-primary': option.checked ,'btn-normal':!option.checked}">
+                {{option.value}}
+            </button>
+        </div>
+    </div>
+    <div class="col-md-2 center">
+        <a (click)="push()"><i class="fa fa-exchange" aria-hidden="true"></i></a>
+    </div>
+    <div class="col-md-5">
+        <span>Selected: <a style="text-decoration: none;" (click)="clearAll()" href="#">Clear All</a></span>
+        <div class="mt-1 p-1" style="background-color: #e3f2fd;min-height: 90px ;border: 1px solid #dedede;">
+            <button [disabled]="disabled" *ngFor="let option of selectedData let i=index;" class="btn px-1 mx-1 mb-1 mt-1 btn-sm" (click)="select(option)"
+                    [ngClass]="{'btn-primary': option.checked ,'btn-normal':!option.checked}">
+                    {{option.value}}
+            </button>
+        </div>
+    </div>
 </div>

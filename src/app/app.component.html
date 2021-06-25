@@ -2,17 +2,8 @@
   <a class="navbar-brand" href="#">Demo</a>
 </nav>
 <form [formGroup]="myForm">
-  <div class="row d-flex mt-5 px-3">
-    <div class="col-md-5">
-      <span>Available: <a style="text-decoration: none;" (click)="selectAll()" href="#">Select All</a></span>
-      <app-multi-select-options [PData]="availabelOptions" (childEvent)="availabelOptions=$event"></app-multi-select-options>
-    </div>
-    <div class="col-md-2 center">
-      <a (click)="push()"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-    </div>
-    <div class="col-md-5">
-      <span>Selected: <a style="text-decoration: none;" (click)="clearAll()" href="#">Clear All</a></span>
-      <app-multi-select-options [PData]="formData.options.value || selectedOptions" (childEvent)="selectedOptions=$event"></app-multi-select-options>
-    </div>
-  </div>
+    <app-multi-select-options [PData]="options" formControlName='options'></app-multi-select-options>
 </form>
+
+<div>{{myForm.value | json}}</div>
+<div>touched: {{myForm.controls['options'].touched}}</div>
